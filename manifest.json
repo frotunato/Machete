@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+  "name": "Machete",
+  "description": "Elimina el reproductor con publicidad de Forocoches",
+  "version": "1.0",
+  "content_scripts": [{
+      "matches": ["http://www.forocoches.com/foro/*"],
+      "js": ["app.js"],
+      "run_at": "document_start"
+  }]
+}
