@@ -1,4 +1,5 @@
-var tA = Date.now();
+//var tA = Date.now();
+
 function verVideo (id, frameId) {
   var container = document.getElementById(frameId);
   var fragment = document.createDocumentFragment();
@@ -18,7 +19,6 @@ function verVideo (id, frameId) {
   iframe.height = '390';
   iframe.frameBorder = '0';
   iframe.allowFullScreen = "allowFullScreen";
- //iframe.autoplay = '1';
   iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1';
   iframe.onload = function () {
     container.firstChild.firstChild.firstChild.remove();
@@ -33,7 +33,7 @@ function verVideo (id, frameId) {
   
   //childDiv.appendChild(iframe);
   parentDiv.appendChild(childDiv);
-  childDiv.appendChild(img)
+  childDiv.appendChild(img);
   childDiv.appendChild(playButton);
   fragment.appendChild(parentDiv);
   //var replaced = container.parentNode.replaceChild(fragment, container);
@@ -42,7 +42,7 @@ function verVideo (id, frameId) {
   //div.textContent = 'the big salchipapa';
 
   container.appendChild(fragment/*.cloneNode(true)*/);
-  
+
   var replaceThumbnailWithPlayer = function (event) {
     container.firstChild.firstChild.appendChild(iframe);
     //var fragment2 = document.createDocumentFragment();
@@ -56,8 +56,13 @@ function verVideo (id, frameId) {
 }
 //console.log(document, window)
 var script;
-
+var thisScript = document.currentScript;
+//setInterval(function () {
+//  console.log(thisScript.src)
+//
+//}, 200)
 var observer = new MutationObserver(function (mutations) {
+
   if (document.body/* && document.body.firstChild.nextSibling.nodeName === 'SCRIPT'*/) {
     //script = document.body.firstChild.nextSibling;
     //var newScript = document.createElement('script');
@@ -83,7 +88,7 @@ var observer = new MutationObserver(function (mutations) {
         newScript.appendChild(textNode);
         newScript.type = 'text/javascript';
         script.parentNode.replaceChild(newScript, script);
-        console.log(Date.now() - tA);
+       // console.log(Date.now() - tA);
         return;
       }
       //for (var j = mutations[i].addedNodes.length - 1; j >= 0; j--) {
